@@ -1,7 +1,7 @@
 Description
 -----------
 
-This is starter code for a front-end TypeScript project. It is targeted toward complex front end object-oriented applications.
+This is minimum starter code for my front-end TypeScript projects. It is targeted toward complex front end object-oriented applications.
 
 Set Up
 ------
@@ -13,9 +13,18 @@ to install project dependencies
 
 And then:
 
+`npm run-script run`
+
+To compile all TypeScript, and launch a python SimpleHTTPServer in the src directory. You can instead run:
+
 `npm run-script make`
 
-To make all TypeScript
+To just compile all TypeScript.
+
+GitIgnore
+---------
+
+The project is initially setup to ignore common ide files, and built JavaScript / map files. JavaScript files in the `src/js/vendor` directory are not ignored.
 
 Development Style
 -----------------

@@ -13,8 +13,6 @@
 *.js
 *.map
 !src/js/vendor/*
-/kimbee_cordova
-/kimbee_cordova/*
 
 
 # Created by https://www.gitignore.io
