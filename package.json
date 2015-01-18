@@ -1,0 +1,14 @@
+{
+  "name" : "Project Title",
+  "version": "0.0.1",
+  "description": "Project Description",
+  "scripts": {
+    "make": "cd src/js; ../../node_modules/.bin/tsc ./bootstrap.ts --module AMD --sourceMap; cd ../../"
+  },
+  "dependencies": {
+    "cordova" : "latest",
+    "typescript": "latest"
+  },
+  "author": "Aaron Nech",
+  "license": "N/A"
+}
