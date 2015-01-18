@@ -36,3 +36,4 @@ The application development style I follow is similar to many Java applications:
 - Every class that depends on another class, imports that class via `import ClassName = require('/path-to-class/ClassName');`
 - Every class TypeScript file is named as `ClassName.ts`
 - There is a single entrypoint class which is required and constructed by `bootstrap.ts`
+- `bootstrap.ts` can be thought of the equivalent to Java's `public static void main(...) {}`
