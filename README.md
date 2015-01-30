@@ -1,7 +1,7 @@
 Description
 -----------
 
-This is minimum starter code for my front-end TypeScript projects. It is targeted toward complex front end object-oriented applications.
+This is minimum starter code for my front-end TypeScript projects. It is targeted toward complex object-oriented applications in the browser or phone via PhoneGap.
 
 Set Up
 ------
@@ -15,16 +15,25 @@ And then:
 
 `npm run-script run`
 
-To compile all TypeScript, and launch a python SimpleHTTPServer in the src directory. You can instead run:
+To compile all TypeScript, and launch a python SimpleHTTPServer in the `src/client/static` directory. You can instead run:
 
 `npm run-script make`
 
 To just compile all TypeScript.
 
+PhoneGap Android Support
+------------------------
+
+To run the application on android simply run:
+
+`npm run-script run`
+
+Assuming you have all the dependencies installed (e.g. cordova, android SDK, emulator / deviced plugged in).
+
 GitIgnore
 ---------
 
-The project is initially setup to ignore common ide files, and built JavaScript / map files. JavaScript files in the `src/js/vendor` directory are not ignored.
+The project is initially setup to ignore common ide files, and built JavaScript / map files. JavaScript files in the `src/common/vendor` directory are not ignored.
 
 Development Style
 -----------------

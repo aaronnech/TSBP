@@ -1,13 +1,24 @@
 {
-  "name" : "TSFrontEndBP",
+  "name" : "TSBP",
   "version": "0.0.1",
   "description": "Project Description",
   "scripts": {
-    "make": "cd src/js; ../../node_modules/.bin/tsc ./bootstrap.ts --module AMD --sourceMap; cd ../../",
-    "run": "npm run-script make && cd src/; python -m SimpleHTTPServer"
+    "install_cordova" : "cordova create _cordova com.projectns.pckge Project",
+    "install_android_cordova" : "cd _cordova && cordova platform add android && cd ..",
+    "cp_cordova" : "cp -R src/* _cordova/www",
+    "run_android_cordova" : "cd _cordova && cordova build && cordova run android && cd ..",
+    "android" : "rm -Rf _cordova && npm run-script install_cordova && npm run-script install_android_cordova && npm run-script cp_cordova && npm run-script run_android_cordova",
+
+    "compile-ts": "cd src; find . -name \"*.ts\" | xargs ../node_modules/.bin/tsc -w --module commonjs --sourceMap; cd ../",
+    "bundle-client" : "cd src; ../node_modules/.bin/browserify client/main.ts --outfile client/static/js/main.js; cd ../",
+
+    "make" : "npm run-script compile-ts && npm run-script bundle-client",
+    "run" : "npm run-script make && cd src/client/static; python -m SimpleHTTPServer"
   },
   "dependencies": {
-    "typescript": "latest"
+    "typescript" : "latest",
+    "browserify" : "latest",
+    "cordova" : "latest"
   },
   "author": "Aaron Nech",
   "license": "N/A"

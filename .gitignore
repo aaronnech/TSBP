@@ -12,7 +12,7 @@
 *.log
 *.js
 *.map
-!src/js/vendor/*
+!src/client/static/js/vendor/*
 
 
 # Created by https://www.gitignore.io
