@@ -1,7 +1,7 @@
 Description
 -----------
 
-This is minimum starter code for my front-end TypeScript projects. It is targeted toward complex object-oriented applications in the browser or phone via PhoneGap.
+This is minimum boilerplate code for my TypeScript projects. It is targeted toward complex object-oriented applications in the browser or phone via PhoneGap, where TypeScript maintainability is important.
 
 Set Up
 ------
@@ -15,20 +15,37 @@ And then:
 
 `npm run-script run`
 
-To compile all TypeScript, and launch a python SimpleHTTPServer in the `src/client/static` directory. You can instead run:
+To compile all TypeScript, and launch the main.js server located in the `server` directory, you can instead run:
 
-`npm run-script make`
+`npm run-script serve`
 
 To just compile all TypeScript.
+
+
+Directory Breakdown
+-------------------
+
+There are three directories in the source:
+
+1. `src/server` - This contains all code only pertaining to the server side application. If there is no server, you can safely delete this directory and remove `express` as a dependency.
+2. `src/client` - This contains all code only pertaining to the client side application. Browserify is used with the start point `client/main.ts` to scoop up all client code and bundle it into `client/static/js/main.js`
+3. `src/common` - This contains all code that is shared by both client and server. Including files such as typescript definitions. NodeJS processes dependencies on its own via support for `require()`, so any `src/server` code that depends on common code will do so automatically. `src/client` code will scoop up common code via the same mechanism, but employed by Browserify.
+
+Vendors
+-------
+
+Vendor files are files that do not naturally belong to the application, but need to be used (e.g. libraries). If a library has an equivalent NPM package, you can just use `require()` as normal after installation via NPM and both the client and server will have support to get the dependency (the client via Browserify).
+
+If the library is client and does not have a NPM package, you will need to place it in `src/client/static/js/vendor` where it can be safely allowed by the gitignore. You then need to include it manually through the `index.html` file.
 
 PhoneGap Android Support
 ------------------------
 
 To run the application on android simply run:
 
-`npm run-script run`
+`npm run-script android`
 
-Assuming you have all the dependencies installed (e.g. cordova, android SDK, emulator / deviced plugged in).
+Assuming you have all the dependencies installed (e.g. cordova, android SDK, emulator / deviced plugged in). This script will create a `_cordova` directory which will contain a copy of your post-compiled `src/client/static` directory.
 
 GitIgnore
 ---------
@@ -44,5 +61,3 @@ The application development style I follow is similar to many Java applications:
 - Every class TypeScript file ends with an `export = ClassName;` statement to make itself available for import
 - Every class that depends on another class, imports that class via `import ClassName = require('/path-to-class/ClassName');`
 - Every class TypeScript file is named as `ClassName.ts`
-- There is a single entrypoint class which is required and constructed by `bootstrap.ts`
-- `bootstrap.ts` can be thought of the equivalent to Java's `public static void main(...) {}`

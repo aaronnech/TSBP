@@ -13,9 +13,10 @@
     "bundle-client" : "cd src; ../node_modules/.bin/browserify client/main.ts --outfile client/static/js/main.js; cd ../",
 
     "make" : "npm run-script compile-ts && npm run-script bundle-client",
-    "run" : "npm run-script make && cd src/client/static; python -m SimpleHTTPServer"
+    "serve" : "npm run-script make && cd src/client/static; node main.js"
   },
   "dependencies": {
+    "express" : "latest",
     "typescript" : "latest",
     "browserify" : "latest",
     "cordova" : "latest"
