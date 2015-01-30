@@ -9,11 +9,11 @@
     "run_android_cordova" : "cd _cordova && cordova build && cordova run android && cd ..",
     "android" : "rm -Rf _cordova && npm run-script install_cordova && npm run-script install_android_cordova && npm run-script cp_cordova && npm run-script run_android_cordova",
 
-    "compile-ts": "cd src; find . -name \"*.ts\" | xargs ../node_modules/.bin/tsc -w --module commonjs --sourceMap; cd ../",
-    "bundle-client" : "cd src; ../node_modules/.bin/browserify client/main.ts --outfile client/static/js/main.js; cd ../",
+    "compile-ts": "cd src; find . -name \"*.ts\" | xargs ../node_modules/.bin/tsc --module commonjs --sourceMap; cd ..",
+    "bundle-client" : "cd src/client; ../../node_modules/.bin/browserify main.ts --o static/js/main.js; cd ../..",
 
     "make" : "npm run-script compile-ts && npm run-script bundle-client",
-    "serve" : "npm run-script make && cd src/client/static; node main.js"
+    "serve" : "npm run-script make && node src/server/main.js"
   },
   "dependencies": {
     "express" : "latest",

@@ -1,8 +1,10 @@
+/// <reference path="../common/def/express.d.ts"/>
+
 import express = require("express");
+var app = express();
 
-var server = express();
-server.configure(function(){
-	server.use(express.static(__dirname + '../client/static'));
-});
+app.use(express.static(__dirname + '/../client/static'));
 
-server.listen(1337);
+app.listen(1337);
+
+console.log('Listening on port 1337...');
