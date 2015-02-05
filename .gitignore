@@ -13,6 +13,8 @@
 *.js
 *.map
 !src/client/static/js/vendor/*
+node_modules
+node_modules/*
 
 
 # Created by https://www.gitignore.io

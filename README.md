@@ -5,21 +5,29 @@ This is minimum boilerplate code for my TypeScript projects. It is targeted towa
 
 Set Up
 ------
-Run the following:
+Run the following from the root directory:
 
 `npm install`
   
-to install project dependencies
+to install project dependencies into a folder called `node_modules`
 
 And then:
 
-`npm run-script run`
+`npm run-script serve`
 
 To compile all TypeScript, and launch the main.js server located in the `server` directory, you can instead run:
 
-`npm run-script serve`
+`npm run-script make`
 
 To just compile all TypeScript.
+
+Methodology Overview
+--------------------
+Both Client and Server are written in TypeScript and ultimately compiled to JavaScript. This is cool because:
+
+1. Both Client and Server can share code. For example the client and server both use a Pizza object for various functionality, we only need to write that object once (this kind of code I'm calling `common` and goes in the `src/common` directory).
+2. We use NodeJS to run server code on a server computer
+3. We use Browserify to scoop up all the seperate JavaScript files and bundle them into one JavaScript include for the browser platform.
 
 
 Directory Breakdown
