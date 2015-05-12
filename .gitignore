@@ -12,7 +12,7 @@
 *.log
 *.js
 *.map
-!src/client/static/js/vendor/*
+!src/client/vendor/*
 node_modules
 node_modules/*
 
