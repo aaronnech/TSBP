@@ -7,14 +7,14 @@
 *.gz
 
 *.toc
-./bin
-./bin/*
 .idea
 .idea/*
 *.log
 *.map
 node_modules
 node_modules/*
+bin
+bin/*
 
 
 # Created by https://www.gitignore.io
