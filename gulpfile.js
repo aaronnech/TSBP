@@ -1,8 +1,12 @@
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var nodeunit = require('gulp-nodeunit');
+var browserify = require('browserify');
+var reactify = require('reactify');
+var source = require("vinyl-source-stream");
+
  
-gulp.task('default', ['bundleClient', 'moveStatic']);
+gulp.task('default', ['bundleClient']);
 
 gulp.task('compileTS', function() {
 	var tsResult = gulp
@@ -17,17 +21,19 @@ gulp.task('compileTS', function() {
 	return tsResult.js.pipe(gulp.dest('./bin'));
 });
 
-gulp.task('bundleReact', ['compileTS'], function() {
-	
-});
 
-gulp.task('bundleClient', ['compileTS'], function() {
-    gulp.src('src/client/main.js')
-        .pipe(browserify({
-          insertGlobals : true,
-          debug : !gulp.env.production
-        }))
-        .pipe(gulp.dest('./build/js'))
+gulp.task('bundleClient', ['compileTS', 'moveStatic'], function() {
+	var b = browserify();
+	
+	// USING THE REACT TRANSFORM
+	b.transform(reactify);
+	
+	// Grab the file to build the dependency graph from
+	b.add('./bin/client/main.js');
+	
+	b.bundle()
+	 .pipe(source('main.js'))
+	 .pipe(gulp.dest('./bin/client/static/js'));
 });
 
 

@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "express" : "latest",
+    "gulp" : "latest",
     "gulp-typescript" : "latest",
-    "gulp-browserify" : "latest",
-    "gulp-reactify" : "latest",
-    "gulp-nodeunit" : "latest"
+    "gulp-nodeunit" : "latest",
+    "browserify" : "latest",
+    "reactify" : "latest",
+    "vinyl-source-stream" : "latest"
   },
   "author": "Aaron Nech",
   "license": "N/A"
