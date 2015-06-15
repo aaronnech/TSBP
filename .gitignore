@@ -7,12 +7,12 @@
 *.gz
 
 *.toc
+./bin
+./bin/*
 .idea
 .idea/*
 *.log
-*.js
 *.map
-!src/client/vendor/*
 node_modules
 node_modules/*
 

@@ -3,23 +3,16 @@
   "version": "0.0.1",
   "description": "Project Description",
   "scripts": {
-    "install_cordova" : "cordova create _cordova com.projectns.pckge Project",
-    "install_android_cordova" : "cd _cordova && cordova platform add android && cd ..",
-    "cp_cordova" : "cp -R src/* _cordova/www",
-    "run_android_cordova" : "cd _cordova && cordova build && cordova run android && cd ..",
-    "android" : "rm -Rf _cordova && npm run-script install_cordova && npm run-script install_android_cordova && npm run-script cp_cordova && npm run-script run_android_cordova",
-
-    "compile-ts": "cd src; find . -name \"*.ts\" | xargs ../node_modules/.bin/tsc --module commonjs --sourceMap; cd ..",
-    "bundle-client" : "cd src/client; ../../node_modules/.bin/browserify main.ts --o static/js/main.js; cd ../..",
-
-    "make" : "npm run-script compile-ts && npm run-script bundle-client",
+    "make" : "./node_modules/.bin/gulp",
+    "test" : "npm run-script make && ./node_modules/.bin/gulp test",
     "serve" : "npm run-script make && node src/server/main.js"
   },
   "dependencies": {
     "express" : "latest",
-    "typescript" : "latest",
-    "browserify" : "latest",
-    "cordova" : "latest"
+    "gulp-typescript" : "latest",
+    "gulp-browserify" : "latest",
+    "gulp-reactify" : "latest",
+    "gulp-nodeunit" : "latest"
   },
   "author": "Aaron Nech",
   "license": "N/A"

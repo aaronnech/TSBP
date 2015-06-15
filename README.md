@@ -38,22 +38,19 @@ There are three directories in the source:
 1. `src/server` - This contains all code only pertaining to the server side application. If there is no server, you can safely delete this directory and remove `express` as a dependency.
 2. `src/client` - This contains all code only pertaining to the client side application. Browserify is used with the start point `client/main.ts` to scoop up all client code and bundle it into `client/static/js/main.js`
 3. `src/common` - This contains all code that is shared by both client and server. Including files such as typescript definitions. NodeJS processes dependencies on its own via support for `require()`, so any `src/server` code that depends on common code will do so automatically. `src/client` code will scoop up common code via the same mechanism, but employed by Browserify.
+4. `src/vendor` - This contains all JS source that is not available via NPM.
+
+Unit Testing
+------------
+
+Unit testing is done with NodeUnit and is available immediately by running `npm run-script test`. Tests should reside in static TypeScript classes as per NodeUnit standards such that each static function is one unit test. Test files are automatically recognized if they end with the postfix `-test.ts`.
 
 Vendors
 -------
 
 Vendor files are files that do not naturally belong to the application, but need to be used (e.g. libraries). If a library has an equivalent NPM package, you can just use `require()` as normal after installation via NPM and both the client and server will have support to get the dependency (the client via Browserify).
 
-If the library is client and does not have a NPM package, you will need to place it in `src/client/static/js/vendor` where it can be safely allowed by the gitignore. You then need to include it manually through the `index.html` file.
-
-PhoneGap Android Support
-------------------------
-
-To run the application on android simply run:
-
-`npm run-script android`
-
-Assuming you have all the dependencies installed (e.g. cordova, android SDK, emulator / deviced plugged in). This script will create a `_cordova` directory which will contain a copy of your post-compiled `src/client/static` directory.
+If the library is client and does not have a NPM package, you will need to place it in `src/vendor`.
 
 GitIgnore
 ---------
