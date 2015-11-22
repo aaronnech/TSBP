@@ -22,7 +22,7 @@ gulp.task('compileTS', function() {
 });
 
 
-gulp.task('bundleClient', ['compileTS', 'moveStatic'], function() {
+gulp.task('bundleClient', ['compileTS', 'move'], function() {
 	var b = browserify();
 	
 	// USING THE REACT TRANSFORM
@@ -36,10 +36,21 @@ gulp.task('bundleClient', ['compileTS', 'moveStatic'], function() {
 	 .pipe(gulp.dest('./bin/client/static/js'));
 });
 
+gulp.task('move', ['move-component', 'move-statics']);
 
-gulp.task('moveStatic', function() {
+gulp.task('move-component', function(cb) {
+    // move components
+    var jsx = gulp.src('src/client/component/*.jsx')
+                  .pipe(gulp.dest('./bin/client/component'));
+
+    jsx.on('end', function() {
+        cb();
+    });
+});
+
+gulp.task('move-statics', function() {
 	var vendors = gulp
-				.src('src/client/static/*');
+				.src('src/client/static/**/*');
 
 	return vendors.pipe(gulp.dest('./bin/client/static'));
 });
