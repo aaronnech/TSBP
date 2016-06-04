@@ -13,6 +13,7 @@
     "gulp-typescript" : "latest",
     "gulp-nodeunit" : "latest",
     "browserify" : "latest",
+    "react" : "latest",
     "reactify" : "latest",
     "vinyl-source-stream" : "latest"
   },
